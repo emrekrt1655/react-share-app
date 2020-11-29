@@ -1,14 +1,11 @@
 import React from 'react';
-import Signup from './pages/Signup';
-import Signin from './pages/Signin'
-import Navbar from './components/Navbar'
+import AppRouter from './Router.js/Router'
 
 function App() {
   
   return (
     <div className="App">
-      <Navbar/>
-      <Signin/>
+     <AppRouter/>
     </div>
   );
 }
