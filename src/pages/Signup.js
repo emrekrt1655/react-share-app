@@ -25,7 +25,7 @@ function Signup() {
           password:'',
         },
         onSubmit: values => {
-          firebase.register(values.email,values.password);
+          firebase.register(values.displayName, values.email,values.password);
         },
       });
     const signupStyles =  styles(); //we can take as object to take the codes as signupStyles.wrapper

@@ -25,7 +25,7 @@ import { Button, Grid, TextField, Container
      }
 
      const handleFormSubmit = values => {
-        alert(JSON.stringify(values, null, 2));
+        firebase.signIn(values.email, values.password);
       }
 
      
