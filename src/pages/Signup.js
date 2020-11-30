@@ -1,16 +1,22 @@
 import React from "react";
-import { Button, TextField, Grid, Container } from "@material-ui/core";
+import { Button, TextField, Grid, Container, Avatar,Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useFormik } from "formik";
 import firebase from "../firebase/firebase.utils";
 import * as Yup from "yup";
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
  
 
- const styles = makeStyles({
+ const styles = makeStyles((theme) => ({ 
      wrapper:{
-         marginTop: '5rem'
+         marginTop: '5rem',
+         textAlign:'center'
+     },
+     avatar:{
+      margin: '2rem auto',
+      backgroundColor: theme.palette.secondary.main
      }
- })
+ }));
 
   const handleGoogleButtonClick = () => {
     firebase.useGoogleProvider();
@@ -40,6 +46,12 @@ function Signup() {
     const signupStyles =  styles(); //we can take as object to take the codes as signupStyles.wrapper
   return (
     <Container maxWidth='sm' className={signupStyles.wrapper}>
+      <Avatar className={signupStyles.avatar}>
+      <LockOutlinedIcon/>
+    </Avatar>
+    <Typography variant='h4'>
+      Sign Up
+    </Typography>
         <form onSubmit={formik.handleSubmit}>
       <Grid container spacing ={3}>
           <Grid item xs = {12}>
