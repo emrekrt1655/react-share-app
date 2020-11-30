@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Grid, TextField, Container
  } from "@material-ui/core";
+ import * as Yup from 'yup';
  import {makeStyles} from '@material-ui/core/styles';
  import {Formik} from 'formik';
 
@@ -16,7 +17,14 @@ import { Button, Grid, TextField, Container
  const initialValues = {
     email: '',
     password:'',
-  }
+  };
+
+  const SigninSchema = Yup.object().shape({
+    email: Yup.string().email('Invalid Email').required('Email is required!!'),
+    password: Yup.string()
+    .required('No password provided.')
+    .min(8, 'Password is too short - schold be 8 chars minimum. ')
+  })
  
  function Signin() {
      
@@ -36,8 +44,9 @@ import { Button, Grid, TextField, Container
         <Formik 
             initialValues={initialValues}
             onSubmit={handleFormSubmit}
+            validationSchema={SigninSchema}
         >
-            {({handleSubmit, handleChange, values})=>(
+            {({handleSubmit, handleChange, values, errors})=>(
                 <form onSubmit={handleSubmit} >
                 <Grid container spacing ={3}>
                 <Grid item xs = {12}>
@@ -48,6 +57,8 @@ import { Button, Grid, TextField, Container
                 fullWidth
                 value={values.email}
                 onChange={handleChange}
+                error={errors.email}
+                helperText={errors.email}
                  />
                 </Grid>
                 <Grid item xs = {12}>
@@ -59,6 +70,8 @@ import { Button, Grid, TextField, Container
                 fullWidth
                 value={values.password}
                 onChange={handleChange}
+                error={errors.password}
+                helperText={errors.password}
                  />
                 </Grid>
                 <Grid item xs = {12}>
