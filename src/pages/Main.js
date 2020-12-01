@@ -3,6 +3,7 @@ import axios from 'axios';
 import {makeStyles} from '@material-ui/core/styles';
 import { Button, Grid, TextField, Container, Avatar, Typography
 } from "@material-ui/core";
+import MediaCard from '../components/MediaCard'
 
 
 const stylesFunc = makeStyles((theme)=>({
@@ -42,7 +43,11 @@ function Main() {
         <div>
             MAIN PAGE
             {userList?.map((user)=> {
-                return <p key={user?.id}>{user.title + ' ' +  user.firstName + ' ' + user.lastName}</p>
+                return <MediaCard key={user?.id}
+                    userImage ={user?.picture} 
+                    userName={`${user?.title} ${user?.firstName} ${user?.lastName}`} 
+                    userMail={user?.email}>
+                    </MediaCard>
             })}
         </div>
         </Container>
