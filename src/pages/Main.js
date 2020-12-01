@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {makeStyles} from '@material-ui/core/styles';
-import { Button, Grid, TextField, Container, Avatar, Typography
+import { capitalize, Grid, TextField, Container, Avatar, Typography, 
 } from "@material-ui/core";
 import MediaCard from '../components/MediaCard'
 
@@ -35,21 +35,28 @@ function Main() {
         fetchData();
     }, []);
 
-    console.log(userList)
+    
 
     return(
-        <Container maxWidth='sm' className={mainStyles.wrapper}>
-
-        <div>
-            MAIN PAGE
+        <Container  className={mainStyles.wrapper}>
+            <Grid container spacing={1} >
             {userList?.map((user)=> {
-                return <MediaCard key={user?.id}
+
+                return (
+                <Grid item xs={4} key={user?.id}>
+
+                <MediaCard
+                    id = {user.id}
                     userImage ={user?.picture} 
-                    userName={`${user?.title} ${user?.firstName} ${user?.lastName}`} 
+                    userName={`${capitalize(user?.title)} ${user?.firstName} ${user?.lastName}`} 
                     userMail={user?.email}>
                     </MediaCard>
-            })}
-        </div>
+                </Grid>
+            )})}
+
+            </Grid>
+        
+      
         </Container>
     )
 }
