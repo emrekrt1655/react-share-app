@@ -7,5 +7,5 @@ export const fetchData = async (path) => {
             'app-id': REACT_APP_API_TOKEN,
         },
     });
-    return response?.data?.data;
+    return response?.data;
 };
