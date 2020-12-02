@@ -9,6 +9,7 @@
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.2.2",
     "axios": "^0.21.0",
+    "date-fns": "^2.16.1",
     "firebase": "^8.1.1",
     "formik": "^2.2.5",
     "react": "^17.0.1",
