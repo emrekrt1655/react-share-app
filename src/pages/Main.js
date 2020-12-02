@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {makeStyles} from '@material-ui/core/styles';
-import { capitalize, Grid, TextField, Container, Avatar, Typography, 
+import { capitalize, Grid, CircularProgress, Container, Avatar, Typography, 
 } from "@material-ui/core";
 import MediaCard from '../components/MediaCard'
 
@@ -39,7 +39,7 @@ function Main() {
 
     return(
         <Container  className={mainStyles.wrapper}>
-            <Grid container spacing={1} >
+            { !userList ? (<CircularProgress/>) : (<Grid container spacing={1} >
             {userList?.map((user)=> {
 
                 return (
@@ -54,7 +54,7 @@ function Main() {
                 </Grid>
             )})}
 
-            </Grid>
+            </Grid>)}
         
       
         </Container>
