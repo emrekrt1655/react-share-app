@@ -1,6 +1,7 @@
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import { customErrorHandler } from "../helper/customErrorHandler";
 
 const devConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -49,8 +50,16 @@ const devConfig = {
 
     signIn(email, password) {
       this.firebaseAuth.signInWithEmailAndPassword(email, password);
-    }
+    };
 
+    async forgotPassword(email) {
+      try {
+        await this.firebaseAuth.sendPasswordResetEmail(email);
+        window.location.href = "/";
+      } catch (error) {
+        return customErrorHandler(error);
+      }
+    }
   };
 
   export default new Firebase();
